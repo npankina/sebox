@@ -1,0 +1,90 @@
+# C++ specific ignores
+
+# Project's files and folders
+*src/
+
+# Compiled Object files
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.dSStore
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+CMakeLists.txt.user
+
+# IDEs
+# CLion
+.idea/
+*.iml
+*.iws
+*.ipr
+cmake-build-debug/
+cmake-build-release/
+out/
+
+# VSCode
+.vscode/
+
+# MacOS specific ignores
+
+# macOS folder attributes
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS file resource forks
+._*
+
+# macOS Finder tags
+*.Tag
+
+# macOS Spotlight search database
+.Spotlight-V100
+
+# macOS filesystem metadata
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# macOS storage for iCloud
+.AppleDB
+.AppleDesktop
+.Network Trash Folder
+.Saved Application State
+.apdisk
+
+# Backup files
+*.bak
+*.tmp
+*~
+
+# Logs
+*.log
