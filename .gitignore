@@ -1,7 +1,7 @@
 # C++ specific ignores
 
 # Project's files and folders
-*src/
+*q/
 
 # Compiled Object files
 *.o

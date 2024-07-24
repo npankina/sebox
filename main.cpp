@@ -22,12 +22,48 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include <QApplication>
+#include <QWidget>
+#include <QListView>
+#include <QStringListModel>
+#include <QVBoxLayout>
+#include <QMessageBox>
 #include <QPushButton>
 
-int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
-    QPushButton button("Hello world!", nullptr);
-    button.resize(700, 500);
-    button.show();
-    return QApplication::exec();
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+
+    // Создаем главное окно
+    QWidget window;
+    window.setWindowTitle("SeBox");
+    window.resize(700, 500);
+
+
+    // Создаем модель данных
+    QStringListModel *model = new QStringListModel;
+    QStringList items;
+    items << "Item 1" << "Item 2" << "Item 3";
+    model->setStringList(items);
+
+    // Создаем ListView
+    QListView *listView = new QListView;
+    listView->setModel(model);
+
+    // Обработка кликов по элементам
+    QObject::connect(listView->selectionModel(), &QItemSelectionModel::currentChanged,
+                     [&](const QModelIndex &current, const QModelIndex &previous) {
+         QString itemText = model->data(current, Qt::DisplayRole).toString();
+         QMessageBox::information(&window, "Item Clicked", "You clicked: " + itemText);
+    });
+
+    // Создаем layout и добавляем ListView
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(listView);
+
+    // Устанавливаем layout для главного окна
+    window.setLayout(layout);
+
+    window.show();
+
+    return app.exec();
 }
