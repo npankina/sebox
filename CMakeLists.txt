@@ -14,7 +14,8 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(sebox main.cpp
-#        src/UI/Main_Window.cpp
+        src/UI/Main_Window.h
+        #        src/UI/Main_Window.cpp
 #        src/Core/App_Manager.cpp
 #        src/Core/Logger.cpp
 #        src/Core/Settings_Manager.cpp

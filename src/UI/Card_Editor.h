@@ -25,7 +25,6 @@ SOFTWARE.
 // Форма для создания и редактирования данных.
 
 #pragma once
-
 #include <QDialog>
 #include "../Data_Models/Card.h"
 
