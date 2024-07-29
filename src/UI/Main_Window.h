@@ -25,30 +25,53 @@ SOFTWARE.
 // Основное окно приложения, содержит элементы интерфейса и управляет отображением данных.
 
 #pragma once
-
 #include <QMainWindow>
 #include "../Core/Settings_Manager.h"
 #include "../Database/Database_Manager.h"
 #include "../Data_Models/Data_Model.h"
 #include "../Core/Logger.h"
 
-class MainWindow : public QMainWindow
+namespace Ui
+{
+    class Main_Window;
+}
+
+class Main_Window final : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    Main_Window(QWidget *parent = nullptr) : QMainWindow(parent), Ui(new Ui::Main_Window)
+    {
+        ui->setupUi(this); // метод, который генерируется Qt Designer и используется для инициализации пользовательского интерфейса, созданного в файле .ui.
+    }
+    ~Main_Window() override { delete Ui; }
 
-    private slots:
+    private slots: // Слоты — это специальные функции в Qt, которые могут быть вызваны при срабатывании соответствующих сигналов.
     void Create_Card();
     void View_Card();
     void Update_Card();
     void Delete_Card();
     void handleLabelClick();
 
+    // from QT
+    void on_btn_start_clicked(); // Тренировка
+
+    // работа с карточками
+    void on_btn_add_card_clicked();
+    void on_btn_change_card_clicked();
+    void on_btn_del_card_clicked();
+
+    // работа с группами
+    void on_btn_add_deck_clicked();
+    void on_btn_change_deck_clicked();
+    void on_btn_del_deck_clicked();
+
 private:
     ASettings_Manager Settings_Manager;
     ADatabase_Manager Database_Manager;
     AData_Model Data_Model;
     ALogger Logger;
+
+    Ui::Main_Window *Ui;
 };
